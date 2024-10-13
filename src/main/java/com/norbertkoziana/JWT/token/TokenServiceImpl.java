@@ -37,6 +37,7 @@ public class TokenServiceImpl implements TokenService{
                 .expiresAt(now.plusSeconds(3600))
                 .subject(authentication.getName())
                 .claim("scope", scope)
+                .claim("CustomClaim", 1)
                 .build();
         return this.jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
     }
